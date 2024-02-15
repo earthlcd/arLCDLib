@@ -48,10 +48,10 @@ void ezLCD3::begin( long baud )
 }
 
 /* itoa:  convert n to characters in s */
-void ezLCD3::itoa(int value, char *sp, int radix)
+void ezLCD3::itoa(int value, char* sp, int radix)
 {
     char tmp[16];// be careful with the length of the buffer
-    char *tp = tmp;
+    char* tp = tmp;
     int i;
     unsigned v;
     int sign;
@@ -229,19 +229,19 @@ void ezLCD3::stripSpace(char* str)
     *i = 0;
 }
 
-int ezLCD3::getInt( char *str )
+int ezLCD3::getInt( char* str )
 {
     stripSpace(str);
     return atoi(str );
 }
 
-long ezLCD3::getLong( char *str )
+long ezLCD3::getLong( char* str )
 {
     stripSpace(str);
     return atol(str );
 }
 
-bool ezLCD3::getString( char *str )
+bool ezLCD3::getString( char* str )
 {
     char c=0;
     *str = 0;
@@ -261,7 +261,7 @@ bool ezLCD3::getString( char *str )
         return false;
 }
 
-bool ezLCD3::getStringToSpace( char *str )
+bool ezLCD3::getStringToSpace( char* str )
 {
     char c=0;
     *str = 0;
@@ -353,7 +353,7 @@ void ezLCD3::xy( void )
     Y = getInt( localbuffer );
 }
 
-void ezLCD3::xy( const char *str )
+void ezLCD3::xy( const char* str )
 {
     sendInt(XY);
     arSerial.write(' ');
@@ -622,14 +622,14 @@ int ezLCD3::touchS( void )
     return getInt( localbuffer );
 }
 
-void ezLCD3::sendString( const char *str )
+void ezLCD3::sendString( const char* str )
 {
     unsigned char c;
     while( (c = *str++) )
         arSerial.write(c);
 }
 
-void ezLCD3::string( int ID, const char *str )
+void ezLCD3::string( int ID, const char* str )
 {
     sendInt(StringID);
     arSerial.write(' ');
@@ -641,7 +641,7 @@ void ezLCD3::string( int ID, const char *str )
     waitForCR();//Clears buffer, send CR and then waits for answer or timeout
 }
 
-void ezLCD3::getStringID( int ID , char *str)
+void ezLCD3::getStringID( int ID , char* str)
 {
     sendInt(StringID);
     arSerial.write(' ');
@@ -653,7 +653,7 @@ void ezLCD3::getStringID( int ID , char *str)
 
 void ezLCD3::printNumber(unsigned long n, int base) {
   char buf[8 * sizeof(long) + 1]; // Assumes 8-bit chars plus zero byte.
-  char *str = &buf[sizeof(buf) - 1];
+  char* str = &buf[sizeof(buf) - 1];
 
   *str = '\0';
 
@@ -724,7 +724,7 @@ void writeit( char c)
 	}
 }
 
-void ezLCD3::printString( const char *str )
+void ezLCD3::printString( const char* str )
 {
 	int i, tempptr, bcount, tempbcount;
 
@@ -763,12 +763,12 @@ void ezLCD3::crlf( void )
 		waitForCR();//Clears buffer, send CR and then waits for answer or timeout
 }
 
-void ezLCD3::print( const char *str )
+void ezLCD3::print( const char* str )
 {
 	printString( str );
 }
 
-void ezLCD3::println( const char *str )
+void ezLCD3::println( const char* str )
 {
 	printString( str );
 	crlf();
@@ -863,7 +863,7 @@ void ezLCD3::printStringID( char ID )
     waitForCR();//Clears buffer, send CR and then waits for answer or timeout
 }
 
-void ezLCD3::fontw( int ID, const char *str)
+void ezLCD3::fontw( int ID, const char* str)
 {
     sendInt(Fontw);
     arSerial.write(' ');
@@ -883,7 +883,7 @@ void ezLCD3::fontw( int ID, int font)
     waitForCR();//Clears buffer, send CR and then waits for answer or timeout
 }
 
-void ezLCD3::font( const char *str)
+void ezLCD3::font( const char* str)
 {
     sendInt(Font);
     arSerial.write(' ');
@@ -910,7 +910,7 @@ void ezLCD3::fontO( bool dir )
     waitForCR();//Clears buffer, send CR and then waits for answer or timeout
 }
 
-unsigned char ezLCD3::choice( const char *str, unsigned char c ) {
+unsigned char ezLCD3::choice( const char* str, unsigned char c ) {
     sendInt(Choice);
     arSerial.write(' ');
     sendString(str);
@@ -1206,7 +1206,7 @@ void ezLCD3::dial( int ID, uint16_t x, uint16_t y, uint16_t radius, uint16_t opt
     waitForCR();//Clears buffer, send CR and then waits for answer or timeout
 }
 
-bool ezLCD3::picture( const char *str )
+bool ezLCD3::picture( const char* str )
 {
     sendInt(Picture);
     arSerial.write(' ');
@@ -1219,7 +1219,7 @@ bool ezLCD3::picture( const char *str )
     return timedOut;
 }
 
-bool ezLCD3::picture( int x, int y, const char *str)
+bool ezLCD3::picture( int x, int y, const char* str)
 {
     sendInt(Picture);
     arSerial.write(' ');
@@ -1234,7 +1234,7 @@ bool ezLCD3::picture( int x, int y, const char *str)
     return timedOut;
 }
 
-bool ezLCD3::picture( int x, int y, int options, const char *str)
+bool ezLCD3::picture( int x, int y, int options, const char* str)
 {
     sendInt(Picture);
     arSerial.write(' ');
@@ -1424,7 +1424,7 @@ void ezLCD3::wvalue( int ID, int value )
     waitForCR();//Clears buffer, send CR and then waits for answer or timeout
 }
 
-void ezLCD3::wvalue( int ID, const char *str )
+void ezLCD3::wvalue( int ID, const char* str )
 {
     sendInt( Widget_Values );
     arSerial.write(' ');
@@ -1447,7 +1447,7 @@ void ezLCD3::st_value( int ID, int stringIDValue )
     waitForCR();//Clears buffer, send CR and then waits for answer or timeout
 }
 
-void ezLCD3::st_value( int ID, const char *str)
+void ezLCD3::st_value( int ID, const char* str)
 {
 	wvalue(ID, str);
 }
@@ -1473,7 +1473,7 @@ void ezLCD3::wstate( int ID, int option )
 }
 
 //file system access
-int ezLCD3::FSchdir( const char * directory )
+int ezLCD3::FSchdir( const char* directory )
 {
     sendInt( Fschdir );
     arSerial.write(' ');
@@ -1495,7 +1495,7 @@ void ezLCD3::FSgetcwd( void )
     return;
 }
 
-int ezLCD3::FSmkdir( const char * directory )
+int ezLCD3::FSmkdir( const char* directory )
 {
     sendInt( Fsmkdir );
     arSerial.write(' ');
@@ -1508,7 +1508,7 @@ int ezLCD3::FSmkdir( const char * directory )
     return getInt( localbuffer );
 }
 
-int ezLCD3::FScopy( const char * source_filename, const char * dest_filename )
+int ezLCD3::FScopy( const char* source_filename, const char* dest_filename )
 {
     sendInt( Fscopy );
     arSerial.write(' ');
@@ -1525,7 +1525,7 @@ int ezLCD3::FScopy( const char * source_filename, const char * dest_filename )
     return getInt( localbuffer );
 }
 
-int ezLCD3::FSrename( const char * source_filename, const char * dest_filename )
+int ezLCD3::FSrename( const char* source_filename, const char* dest_filename )
 {
     sendInt( Fsrename );
     arSerial.write(' ');
@@ -1542,7 +1542,7 @@ int ezLCD3::FSrename( const char * source_filename, const char * dest_filename )
     return getInt( localbuffer );
 }
 
-int ezLCD3::FSremove( const char * filename )
+int ezLCD3::FSremove( const char* filename )
 {
     sendInt( Fsremove );
     arSerial.write(' ');
@@ -1555,7 +1555,7 @@ int ezLCD3::FSremove( const char * filename )
     return getInt( localbuffer );
 }
 
-int ezLCD3::FSopen( const char * filename, const char * mode )
+int ezLCD3::FSopen( const char* filename, const char* mode )
 {
 	if (( mode[1] == 'H' ) || ( mode[1] == 'h' )) 
 		hexmode = 1;
@@ -1630,7 +1630,7 @@ long ezLCD3::FStell( void )
     return getLong( localbuffer );
 }
 
-int ezLCD3::FSwrite( const char * data, int count )
+int ezLCD3::FSwrite( const char* data, int count )
 {
 	int i, tempbcount;
 	int bcount, tempptr, wcount;
@@ -1672,7 +1672,7 @@ int ezLCD3::FSwrite( const char * data, int count )
     return wcount;
 }
 
-int ezLCD3::FSread( char * buffer, int bcount )
+int ezLCD3::FSread( char* buffer, int bcount )
 {
 	int tch, temp, i, tempbcount;
 	char lbuffer[128];
@@ -1789,7 +1789,7 @@ int ezLCD3::RxUART( int port )
     return result;
 }
 
-void ezLCD3::Debug( unsigned long data, const char *format )
+void ezLCD3::Debug( unsigned long data, const char* format )
 {
     char str[16];// be careful with the length of the buffer
 
@@ -1797,7 +1797,7 @@ void ezLCD3::Debug( unsigned long data, const char *format )
 	Debug( str );
 }
 
-void ezLCD3::Debug( long data, const char *format )
+void ezLCD3::Debug( long data, const char* format )
 {
     char str[16];// be careful with the length of the buffer
 
@@ -1805,7 +1805,7 @@ void ezLCD3::Debug( long data, const char *format )
 	Debug( str );
 }
 
-void ezLCD3::Debug( int data, const char *format )
+void ezLCD3::Debug( int data, const char* format )
 {
     char str[16];// be careful with the length of the buffer
 
@@ -1813,7 +1813,7 @@ void ezLCD3::Debug( int data, const char *format )
 	Debug( str );
 }
 
-void ezLCD3::Debug( unsigned int data, const char *format )
+void ezLCD3::Debug( unsigned int data, const char* format )
 {
     char str[16];// be careful with the length of the buffer
 
@@ -1826,7 +1826,7 @@ void ezLCD3::Debug( char data )
 	TxUART( 0, data );
 }
 
-void ezLCD3::Debug( const char *str )
+void ezLCD3::Debug( const char* str )
 {
     unsigned char c;
 
@@ -1834,7 +1834,7 @@ void ezLCD3::Debug( const char *str )
 		TxUART( 0, c );
 }
 
-void ezLCD3::TxUART( int port,  const char *str )
+void ezLCD3::TxUART( int port,  const char* str )
 {
     unsigned char c;
 
@@ -1970,7 +1970,7 @@ int ezLCD3::flush( int port )
 	return result;
 }
 
-void ezLCD3::sendCommand(const char *str)
+void ezLCD3::sendCommand(const char* str)
 {
     sendString(str);
     waitForCR();//Clears buffer, send CR and then waits for answer or timeout

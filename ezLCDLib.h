@@ -129,13 +129,13 @@ public:
     * Has to be char* becuase itoa modifies the buffer sent to it.
     *
     */    
-    void itoa(int value, char *sp, int radix);
+    void itoa(int value, char* sp, int radix);
 
     /** Strips spaces from char* ascii array passed to this function
     * Has to be char* becuase stripSpace modifies the buffer sent to it.
     *
     */
-    void stripSpace(char *str);
+    void stripSpace(char* str);
 
     /**
     *
@@ -167,25 +167,25 @@ public:
     * @param[out] str string to put the data in
     * str has to be a char* becuase getInt calls stripSpace
     */
-    int getInt( char *str );
+    int getInt( char* str );
 
     /** Get a long from the display
     * @param[out] str string to put the data in
     * str has to be a char* becuase getLong calls stripSpace
     */
-    long getLong( char *str );
+    long getLong( char* str );
 
     /** Get a string from the display
     * @param[out] str string to put the data in
     * str has to be a char* becuase getString stores retrived data in str
     */
-    bool getString( char *str );
+    bool getString( char* str );
 
     /** Get a string from the display
     * @param[out] str string to put the data in
     * str has to be a char* becuase getStringToSpace stores retrived data in str
     */
-    bool getStringToSpace( char *str );
+    bool getStringToSpace( char* str );
 
     /** Waits for a CR from display
     *
@@ -206,7 +206,7 @@ public:
     /**
      * 
      */     
-    unsigned char choice( const char *str, unsigned char c  );
+    unsigned char choice( const char* str, unsigned char c  );
     
     /** clear the screen to black
     *
@@ -244,7 +244,7 @@ public:
     
     void xy( void );
 
-	void xy( const char *str );
+	void xy( const char* str );
     
     unsigned int getX( void );
 
@@ -360,7 +360,7 @@ public:
     * lcd.sendCommand( "cls" ); // clear display
     * @endcode
     */
-    void sendCommand( const char *str );
+    void sendCommand( const char* str );
 
     /** Return Xmax of display
     * @return int Xmax of display
@@ -395,14 +395,14 @@ public:
     /** Send a string of data to display
     *
     */
-    void sendString( const char *str );
+    void sendString( const char* str );
 
     /** Set stringID to display
     * @param ID string ID to write
     * @param str string to write
     *
     */
-    void string( int ID, const char *str );
+    void string( int ID, const char* str );
 
     /** Get stringID from Display
     * @param ID string ID to read
@@ -414,7 +414,7 @@ public:
     * lcd.print(ezVer);             // print version
     * @endcode
     */
-    void getStringID( int ID, char *str );
+    void getStringID( int ID, char* str );
 
 	void crlf(void);
 	void print(int value, int mode);
@@ -424,10 +424,10 @@ public:
     /** print string at current x y
     * @param str string prints directly to display
     */
-    void printString( const char *str );
-    void print( const char *str );
+    void printString( const char* str );
+    void print( const char* str );
     void print( char c );
-    void println( const char *str );
+    void println( const char* str );
     void println( char c );
     void println( void );
     
@@ -463,7 +463,7 @@ public:
     * use the ezLCD3xx font convert utilty to convert true type fonts
     * @param str font name
     */
-    void fontw( int id, const char *str);
+    void fontw( int id, const char* str);
     /**
     *
     *
@@ -477,7 +477,7 @@ public:
     *
     */
 
-    void font(const char *str);
+    void font(const char* str);
     /**
     *
     *
@@ -634,7 +634,7 @@ public:
     * images are located in the /EZUSERS/FONTS and /EZSYS/FONTS directory
     * @param str filename
     */
-    bool picture( const char *str );
+    bool picture( const char* str );
 
     /** Display Bitmap
     * Display Bitmap at specfied x y \n
@@ -644,7 +644,7 @@ public:
     * @param y y location to start bitmap
     * @param str filename
     */
-    bool picture(  int x, int y ,const char *str);
+    bool picture(  int x, int y ,const char* str);
  
 	/** Display Bitmap
     * Display Bitmap at specfied x y \n
@@ -655,7 +655,7 @@ public:
 	* @param options 1=align center 2=downscale 3= both
     * @param str filename
     */
-    bool picture(  int x, int y, int options, const char *str);
+    bool picture(  int x, int y, int options, const char* str);
 
     /** StaticBox Widget
     * @param ID the Widget ID to create 
@@ -751,7 +751,7 @@ public:
     * @param ID widget ID to update
     * @param string to update
     */
-	void wvalue( int ID, const char *str );
+	void wvalue( int ID, const char* str );
 
     /** Wvalue set widget values
     * @param ID widget ID to update
@@ -773,7 +773,7 @@ public:
 	 * @param stringIDValue string to update widget with
 	 */
 	
-	void st_value( int ID, const char *str);
+	void st_value( int ID, const char* str);
     
 	//********************************************************
 	
@@ -789,20 +789,20 @@ public:
     * @param data  - data to display
     * @returns none
     */
-    void Debug( unsigned long data, const char *format = "%lu" );
-    void Debug( long data, const char *format = "%ld" );
-    void Debug( unsigned int data, const char *format = "%u" );
-    void Debug( int data, const char *format = "%i" );
+    void Debug( unsigned long data, const char* format = "%lu" );
+    void Debug( long data, const char* format = "%ld" );
+    void Debug( unsigned int data, const char* format = "%u" );
+    void Debug( int data, const char* format = "%i" );
 
     void Debug( char data );
-    void Debug( const char *str );
+    void Debug( const char* str );
 
 	/** Tx UART send character to GPU uart
     * @param type port  - Get the port number (pin)
     * @returns UART character or 0x8000 if none
     */
  	void TxUART( int port, char data );
-	void TxUART( int port, const char *str );
+	void TxUART( int port, const char* str );
 
     /** Recv UART gets character from GPU uart
     * @param type port  - Get the port number (pin)
@@ -833,18 +833,18 @@ public:
     * @param Filename - Defines the file to open
 	* @param fileoption - defines the type open r=read, w=write, a=append, followed by h is binary mode
     */
-    int FSopen( const char *filename, const char *mode );
+    int FSopen( const char* filename, const char* mode );
 
 	/** FSread is a file system read command for the flash drive on the arLCD
     * @param bytecount - Defines the number to read (upto 64 bytes)
     * buffer must be char* since it is loaded with data in this function
     */
-    int FSread( char * buffer, int bytecount );
+    int FSread( char* buffer, int bytecount );
 
 	/** FSwrite is a file system write command for the flash drive on the arLCD
     * @param data - Defines the data to write.  Upto 64 bytes. in binary mode send hex (2 bytes)
     */
-    int FSwrite( const char *data, int count );
+    int FSwrite( const char* data, int count );
 
 	/** FSclose is a file system close command for the flash drive on the arLCD
     */
@@ -890,29 +890,29 @@ public:
 	/** FSchdir is a file system change directory command for the flash drive on the arLCD
  	* @param directory - the directory to change to
     */
-    int FSchdir( const char * directory );
+    int FSchdir( const char* directory );
 
 	/** FSmkdir is a file system make directory command for the flash drive on the arLCD
  	* @param directory - the new directory to create
     */
-    int FSmkdir( const char * directory );
+    int FSmkdir( const char* directory );
 
 	/** FScopy is a file system copy file command for the flash drive on the arLCD
  	* @param source_filename - source file name
  	* @param dest_filename - new file name
     */
-    int FScopy( const char * source_filename, const char * dest_filename );
+    int FScopy( const char* source_filename, const char* dest_filename );
 
 	/** FSrename is a file system rename file command for the flash drive on the arLCD
  	* @param source_filename - existing file name
  	* @param dest_filename - new file name
     */
-    int FSrename( const char * source_filename, const char * dest_filename );
+    int FSrename( const char* source_filename, const char* dest_filename );
 
 	/** FSremove is a file system remove file command for the flash drive on the arLCD
  	* @param source_filename - existing file name
     */
-    int FSremove( const char * source_filename );
+    int FSremove( const char* source_filename );
 
     /**
      * Numerical values for the EarthSEMPL commands.
